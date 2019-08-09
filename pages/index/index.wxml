@@ -1,0 +1,29 @@
+<!--index.wxml-->
+<view class="container">
+  <view id='box' wx:if='{{listData.length>0}}'>
+    <view class='conbox marginbottom_20' wx:for='{{listData}}' wx:key='{{index}}'>
+      <view class='img'>
+        <image src='{{ActivityImg+item.CaMainImage}}' class='percent_100'></image>
+        <view class='lable'>
+          <image src='/images/Label.png' class='percent_100'></image>
+          <text class='labletext font_24'>抢课</text>
+        </view>
+      </view>
+      <view class='content'>
+        <view class='font_36 marginbottom_15 overtwo'>
+          {{item.CaActivityBriefIntroduction}}
+        </view>
+        <view class='briefbox'>
+          <view class='brief'>
+            <view class='overflow font_30 marginbottom_15 briefcolor'>{{item.CaName}}</view>
+            <view class='font_24 timecolor'>截止：{{item.times}}</view>
+          </view>
+          <view class='botton font_36' bindtap='Buyimmediately' data-index='{{index}}'>立即抢购</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class='Notime' wx:if='{{listData.length<1}}'>
+  暂无数据
+</view>

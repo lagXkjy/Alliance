@@ -1,0 +1,58 @@
+/* pages/Establish/Establish.wxss */
+
+.banner {
+  width: 100%;
+  height: 400rpx;
+  margin-bottom: 20rpx;
+}
+
+.listbox {
+  border-bottom: 1rpx solid #e0e0e0;
+}
+
+.listbox>view {
+  display: flex;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+  height: 100rpx;
+  align-items: center;
+  background: #fff;
+  border-top: 1rpx solid #e0e0e0;
+}
+
+label {
+  width: 150rpx;
+}
+
+input {
+  padding-left: 20rpx;
+  color: #a6a6a6
+}
+
+.footer {
+  width: 100%;
+  height: 100rpx;
+  line-height: 100rpx;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  border-top: 1rpx solid #c0c2c4;
+  display: flex;
+}
+
+.footer>button {
+  height: 100rpx;
+  line-height: 100rpx;
+  background: #d1291a !important;
+  color: #fff;
+  border-radius: 0;
+  flex: 1;
+}
+
+.Submitted {
+  width: 450rpx;
+  text-align: center;
+  line-height: 100rpx;
+  color: #a6a6a6;
+  background: #fff;
+}

@@ -1,0 +1,28 @@
+<!--pages/Confirmation/Confirmation.wxml-->
+<view class='header'>
+  <view class='img'>
+    <image src='{{ActivityImg+listData.MainImg}}'></image>
+  </view>
+  <view class='textbox'>
+    <view class='font_30 overtwo'>
+      {{listData.CaName}}
+    </view>
+    <view class='font_36 money'>
+      ￥{{listData.CaPrice}}
+    </view>
+  </view>
+</view>
+<view class='content font_30'>
+  <view>
+    <label>姓名:</label>
+    <input placeholder='请输入姓名' value='{{name}}' bindinput="nameinput"></input>
+  </view>
+  <view>
+    <label>手机:</label>
+    <input placeholder='请输入手机号' value='{{phone}}' type='number' maxlength='11' bindinput='phoneinput'></input>
+  </view>
+</view>
+<view class='footer'>
+  <view class='font_30'>实付款：￥{{listData.CaPrice}}</view>
+  <view bindtap='submit'>确认提交</view>
+</view>

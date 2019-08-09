@@ -1,0 +1,20 @@
+<!--pages/contact/contact.wxml-->
+<view class='header'>
+  <image src='{{BannerImg+listData.SiYiZhaoBanner}}' class='percent_100'></image>
+</view>
+<view>
+  <view class='fon-30 ffoter '>
+    <view bindtap='jump' wx:key='*this' class='lasta'>
+      <view class='this-flex'>
+        <text>上海市浦东新区张衡路666弄2号201室</text>
+      </view>
+      <image mode='widthFix' style='width:21rpx;' src='/images/jian_13.png'></image>
+    </view>
+    <view bindtap='makePhoneCall' wx:key='*this' class='lasta'>
+      <view class='this-flex'>
+        <text>{{listData.SiYiZhaoPhone}}</text>
+      </view>
+      <image mode='widthFix' style='width:21rpx;' src='/images/jian_13.png'></image>
+    </view>
+  </view>
+</view>

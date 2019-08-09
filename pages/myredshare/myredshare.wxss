@@ -1,0 +1,44 @@
+/* pages/myredshare/myredshare.wxss */
+.header{
+  background: #fff;
+  height: 100rpx;
+  border-top: 1rpx solid #e4e5e8;
+  border-bottom: 1rpx solid #e4e5e8;
+  display: flex;
+  align-items: center;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+}
+.img{
+  width: 59rpx;
+  height: 49rpx;
+  margin-right: 20rpx;
+}
+.Cumulative{
+  color: #3e3f43;
+  margin-right: 20rpx;
+}
+.money{
+  color: #d1291a;
+}
+.content{
+  width: 100%;
+}
+.content>view{
+  /* height: 115rpx; */
+  width: 100%;
+  padding: 20rpx 30rpx;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  border-bottom: 1rpx solid #e4e5e8;
+}
+.text{
+  margin-top: 15rpx;
+}
+.text>text{
+  margin-right: 15rpx;
+  color: #8f8f8f;
+}

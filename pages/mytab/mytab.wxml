@@ -1,0 +1,21 @@
+<!--pages/mytab/mytab.wxml-->
+<view>
+  <view class='header'>
+    <image src='/images/myback.png' class='percent_100'></image>
+    <view class='headimg'>
+      <image src='{{userInfo!=""?userInfo.avatarUrl:"/images/banner2.jpg"}}'></image>
+      <button style='color:#fff;' class='buttons' bindgetuserinfo='getUserInfo' open-type='getUserInfo'>{{userInfo!=""?userInfo.nickName:"点击获取"}}</button>
+    </view>
+  </view>
+</view>
+<view>
+  <view class='fon-30 ffoter '>
+    <button bindgetuserinfo='getUserInfo' open-type='getUserInfo' bindtap='jump' wx:for="{{list}}" wx:key='*this' data-to='{{item.to}}' class='buttons lasta'>
+      <view class='this-flex'>
+        <image mode='widthFix' style='width:30rpx; margin-right:20rpx' src='{{item.url}}'></image>
+        <text>{{item.title}}</text>
+      </view>
+      <image mode='widthFix' style='width:21rpx;' src='/images/jian_13.png'></image>
+    </button>
+  </view>
+</view>

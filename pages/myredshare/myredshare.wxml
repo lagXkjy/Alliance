@@ -1,0 +1,26 @@
+<!--pages/myredshare/myredshare.wxml-->
+<view class='header'>
+  <view class='img'>
+    <image class='percent_100' src='/images/Redenvelopes.png'></image>
+  </view>
+  <view class='font_26 Cumulative'>
+    累计领取红包
+  </view>
+  <view class='font_42 money'>￥{{TotalAmount}}</view>
+</view>
+<view class='content'>
+  <view wx:for='{{listData}}' wx:key="{{index}}">
+      <view>
+        <view class='font_30 overtwo'>{{item.RerCourseName}}</view>
+        <view class='font_24 text'>
+          <text>{{item.RerCoBuyerName}}</text>
+          <text>{{item.RerCoCreateTimes}}购买</text>
+          <text>{{item.RerRedEnvelopesState==1?"已到账":"未到账"}}</text>
+        </view>
+      </view>
+      <view class='font_42 money'>￥{{item.RerReceiveAmount}}</view>
+  </view>
+</view>
+<view class='Notime' wx:if='{{listData.length<1}}'>
+  暂无数据
+</view>

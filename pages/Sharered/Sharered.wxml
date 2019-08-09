@@ -1,0 +1,19 @@
+<!--pages/Sharered/Sharered.wxml-->
+<view class='box'>
+  <view class='header'>
+      <image style='width:60rpx;height:50rpx;margin-right:15rpx;' src='/images/Redenvelopes.png'></image>
+      <view class='font_26 Cumulative'>累计领取红包</view>
+      <view class='money'>￥16.77</view>
+  </view>
+  <view class='list' wx:for='{{listData}}'>
+    <view class='brief'>
+      <view class='font_30 overtwo'>{{item.title}}</view>
+      <view class='font_24 color'>
+        <text>{{item.name}}</text>
+        <text>{{item.time}}</text>
+        <text>{{item.state}}</text>
+      </view>
+    </view>
+    <view class='money'>￥{{item.money}}</view>
+  </view>
+</view>

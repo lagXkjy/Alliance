@@ -1,0 +1,53 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/Buyimmediately/Buyimmediately",
+    "pages/Successful/Successful",
+    "pages/Confirmation/Confirmation",
+    "pages/Sharered/Sharered",
+    "pages/Orderdetails/Orderdetails",
+    "pages/myorder/myorder",
+    "pages/mytab/mytab",
+    "pages/contact/contact",
+    "pages/Establish/Establish",
+    "pages/logs/logs",
+    "pages/myredshare/myredshare",
+    "pages/Map/Map",
+    "pages/limit/limit"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#000",
+    "navigationBarTitleText": "抢课联盟",
+    "navigationBarTextStyle": "white",
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "color": "#939393",
+    "selectedColor": "#d1291a",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "抢课",
+        "iconPath": "images/indextab1.png",
+        "selectedIconPath": "images/indextab.png"
+      },
+      {
+        "pagePath": "pages/Establish/Establish",
+        "text": "创建联盟",
+        "iconPath": "images/Establish.png",
+        "selectedIconPath": "images/Establish1.png"
+      },
+      {
+        "pagePath": "pages/mytab/mytab",
+        "text": "我的",
+        "iconPath": "images/mytab.png",
+        "selectedIconPath": "images/mytab1.png"
+      }
+    ]
+  },
+  "usingComponents": {
+    "poster": "/component/poster/poster"
+  },
+  "sitemapLocation": "sitemap.json"
+}

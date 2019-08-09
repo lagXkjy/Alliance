@@ -1,0 +1,27 @@
+<!--pages/myorder/myorder.wxml-->
+<view class='box' wx:for='{{listData}}' wx:key='{{index}}' data-CoId='{{item.CoId}}' bindtap='details'>
+  <view class='header font_26'>
+    <view class='Orderlabel'>
+      <image src='/images/Orderlabel.png'></image>
+      <text>NO.</text>
+      <text>{{item.CoOrderSN}}</text>
+    </view>
+    <view class='state'>{{item.CoOrderState==1?"抢购成功":"订单取消"}}</view>
+  </view>
+  <view class='con'>
+    <view class='commodity'>
+      <image src='{{ActivityImg+item.CoCaMainImage}}'></image>
+    </view>
+    <view class='titmoney'>
+      <view class='overtwo font_30'>
+        {{item.CoCaName}}
+      </view>
+      <view class='font_36 money'>
+        ￥{{item.CoPaymentIinRealTerms}}
+      </view>
+    </view>
+  </view>
+</view>
+<view class='Notime' wx:if='{{listData.length<1}}'>
+  暂无数据
+</view>

@@ -1,0 +1,17 @@
+<view class='wrapper' hidden='{{isShow}}'>
+  <view class='canvas-box'>
+    <cover-image catchtap='close' src='/images/Close.png' class='Close'></cover-image>
+    <canvas canvas-id='posterCanvas' class='canvas'></canvas>
+  </view>
+  <view class='footer'>
+    <view catchtap='saveImage' class='save'>
+      保存到相册
+    </view>
+  </view>
+</view>
+<!-- <view class="page-body">
+124
+  <view class="page-body-wrapper" style='width: 100%;height: 300px;'>
+    <canvas canvas-id="firstCanvas" class="canvas"></canvas>
+  </view>
+</view> -->

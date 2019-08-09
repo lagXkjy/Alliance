@@ -1,0 +1,12 @@
+<!--pages/Successful/Successful.wxml-->
+<view class='header'>
+  <image src='/images/Successful.png'></image>
+</view>
+<view class='textbox'>
+  <view class='font_48'>恭喜您抢购成功</view>
+  <view class='font_30'>您已获得尊享所有产品资格</view>
+</view>
+<view class='bottonbox font_40'>
+  <button open-type="share">分享好友购买领红包</button>
+  <view bindtap='seeorder'>查看订单详情</view>
+</view>

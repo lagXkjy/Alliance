@@ -1,0 +1,48 @@
+/* pages/Successful/Successful.wxss */
+
+page {
+  background: #fff;
+}
+
+.header {
+  margin-top: 90rpx;
+}
+
+.header>image {
+  width: 240rpx;
+  height: 240rpx;
+  display: block;
+  margin: 0 auto;
+}
+
+.textbox {
+  text-align: center;
+  color: #5a5a5a;
+  margin-top: 55rpx;
+}
+
+.textbox>view:nth-child(1) {
+  font-weight: bold;
+  margin-bottom: 25rpx;
+}
+.bottonbox{
+  margin-top: 100rpx;
+  text-align: center;
+}
+.bottonbox>view,.bottonbox>button{
+  width: 560rpx;
+  height: 80rpx;
+  margin: 0 auto;
+  margin-bottom: 25rpx;
+  line-height: 80rpx;
+  border-radius: 8rpx;
+}
+.bottonbox>button{
+   background: #d1291a;
+   color: #fff;
+   border: none;
+}
+.bottonbox>view{
+   border:1rpx solid #d1291a;
+   color: #d1291a;
+}

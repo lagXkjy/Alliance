@@ -1,0 +1,29 @@
+<!--pages/Orderdetails/Orderdetails.wxml-->
+<view class='header'>
+  <view class='voucherback'>
+    <image src='/images/voucherback.png' style='border-radius:19rpx;' class='percent_100'></image>
+    <view class='headcon'>
+      <view class='headtop'>
+        <view>
+          <image style='width:43rpx;height:49rpx;margin-right:10rpx' src='/images/voucherlable.png'></image>
+          <image style='width:191rpx;height:49rpx;' src='/images/classbegins.png'></image>
+        </view>
+        <view class='font_26'>
+          NO.{{listData.CoOrderSN}}
+        </view>
+      </view>
+      <view class='font_24 describe'>
+        本活动每家联盟商家每个人使用一次，不能重复使用，使用时请出示此凭证 
+      </view>
+    </view>
+  </view>
+</view>
+<view class='box'>
+  <view class='title font_30 overtwo'>{{listData.CoCaName}}</view>
+  <view class='information font_26'>
+    <view> <text>订单号：</text><text> {{listData.CoOrderSN}}</text> </view>
+    <view> <text>支付时间</text><text> {{listData.CoCreateTimes}}</text> </view>
+    <view> <text>姓名：</text><text> {{listData.CoBuyerName}}</text> </view>
+    <view> <text>手机号：</text><text> {{listData.CoBuyerPhone}}</text> </view>
+  </view>
+</view> 

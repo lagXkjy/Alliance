@@ -1,0 +1,59 @@
+/* pages/myorder/myorder.wxss */
+
+.header {
+  height: 70rpx;
+  width: 100%;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+  background: #f9f9f9;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20rpx;
+  border-top: 1rpx solid #e0e0e0;
+}
+
+.Orderlabel {
+  display: flex;
+  color: #d33729;
+  /* align-items: center; */
+}
+
+.Orderlabel>image {
+  width: 29rpx;
+  height: 33rpx;
+  margin-right: 10rpx;
+}
+
+.state {
+  color: #858585;
+}
+
+.con {
+  height: 200rpx;
+  border-top: 1rpx solid #e0e0e0;
+  width: 100%;
+  padding: 30rpx;
+  box-sizing: border-box;
+  background: #fff;
+  display: flex;
+}
+
+.commodity {
+  margin-right: 30rpx;
+}
+
+.commodity>image {
+  width: 280rpx;
+  height: 140rpx;
+}
+
+.titmoney {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.money{
+  font-weight: bold;
+  color: #d1291a;
+}

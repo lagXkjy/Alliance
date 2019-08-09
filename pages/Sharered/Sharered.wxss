@@ -1,0 +1,38 @@
+/* pages/Sharered/Sharered.wxss */
+.box{
+  background: #fff;
+}
+.header{
+  display: flex;
+  align-items: center;
+  background: #fff;
+  height: 100rpx;
+  padding: 0 30rpx;
+  margin-top: 20rpx;
+  border-top: 1rpx solid #e4e5e8;
+  border-bottom: 1rpx solid #e4e5e8;
+}
+.Cumulative{
+  color: #3e3f43;
+  margin-right: 20rpx;
+}
+.money{
+  color: #d1291a;
+  font-size: 42rpx;
+}
+.list{
+  padding: 20rpx;
+  margin: 0 20rpx;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1rpx solid #e4e5e8;
+}
+.brief>view{
+  margin: 20rpx 0;
+}
+.color>text{
+  margin-right: 20rpx;
+  color: #8f8f8f;
+}

@@ -1,0 +1,32 @@
+<!--pages/Establish/Establish.wxml-->
+<view class='banner'>
+  <image src='{{BannerImg+SiCreateAlliancesBanner}}' class='percent_100'></image>
+</view>
+<form bindsubmit="formSubmit">
+  <view class='listbox font_30'>
+    <view>
+      <label>机构名称</label>
+      <input value='{{listData.MiName=="null"?name:listData.MiName}}' name='name' focus="{{focus.name}}" placeholder='请输入机构名称'></input>
+    </view>
+    <view>
+      <label>联系人</label>
+      <input value='{{listData.MiContacts=="null"?Contacts:listData.MiContacts}}' name='Contacts' focus="{{focus.Contacts}}" placeholder='请输入联系人'></input>
+    </view>
+    <view>
+      <label>手机号</label>
+      <input type='number' maxlength='11' value='{{listData.MiContactNumber=="null"?phonenumber:listData.MiContactNumber}}' name='phonenumber' focus="{{focus.phonenumber}}" placeholder='请输入手机号'></input>
+    </view>
+    <view>
+      <label>机构地址</label>
+      <input value='{{listData.MiAddress=="null"?address:listData.MiAddress}}' name='address' focus="{{focus.address}}" placeholder='请输入机构地址'></input>
+    </view>
+  </view>
+  <view class='footer'>
+    <view class='Submitted font_26' wx:if='{{listData.MiId!=0}}'>
+      信息已提交，我们会尽快联系您
+    </view>
+    <button form-type="submit">
+      {{listData.MiId==0?"确认提交":"提价修改"}}
+    </button>
+  </view>
+</form>
