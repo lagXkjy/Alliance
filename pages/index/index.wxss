@@ -12,7 +12,8 @@
 
 .img {
   width: 100%;
-  height: 270rpx;
+  /* height: 270rpx; */
+  height:345rpx;
   overflow: hidden;
   position: relative;
 }

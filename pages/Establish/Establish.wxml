@@ -26,7 +26,7 @@
       信息已提交，我们会尽快联系您
     </view>
     <button form-type="submit">
-      {{listData.MiId==0?"确认提交":"提价修改"}}
+      {{listData.MiId==0?"确认提交":"提交修改"}}
     </button>
   </view>
 </form>

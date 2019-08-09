@@ -21,8 +21,7 @@ Page({
         let listData=this.data.listData
         listData = res.data.OrderInfo
         let data = $common.timeStamp(listData.CoCreateTime)
-        console.log(data)
-        listData.CoCreateTimes = `${data.showTime} ${data.h}:${data.m}`
+        listData.CoCreateTimes = `${data.showTime} ${data.h}:${data.mi}`
         this.setData({
           listData
         })
@@ -70,7 +69,8 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    this.GetUserAtyOrderInfo()
+    wx.stopPullDownRefresh()
   },
 
   /**

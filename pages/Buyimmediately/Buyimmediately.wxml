@@ -1,94 +1,97 @@
 <import src="../../wxParse/wxParse.wxml" />
-<view>
+<view class='box'>
   <view>
-    <swiper indicator-dots indicator-active-color='#fff'>
-      <block wx:for="{{imgUrls}}" wx:key='{{index}}'>
-        <swiper-item>
-          <image src="{{ActivityImg+item}}" class="slide-image percent_100" />
-        </swiper-item>
-      </block>
-    </swiper>
-  </view>
-  <view class='Countdown'>
-    <image src='/images/timeback.png' class='percent_100'></image>
-    <view class='timedown font_24'>
-      <view class='timenumber'>{{timeLeft.days}}</view>
-      <view  class='time'>天</view>
-      <view class='timenumber'>{{timeLeft.hours}}</view>
-      <view  class='time'>时</view>
-      <view class='timenumber'>{{timeLeft.minutes}}</view>
-      <view  class='time'>分</view>
-      <view class='timenumber'>{{timeLeft.seconds}}</view>
-      <view  class='time'>秒</view>
+    <view>
+      <swiper indicator-dots indicator-active-color='#fff'>
+        <block wx:for="{{imgUrls}}" wx:key='{{index}}'>
+          <swiper-item>
+            <image src="{{ActivityImg+item}}" class="slide-image percent_100" />
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+    <view class='Countdown'>
+      <image src='/images/timeback.png' class='percent_100'></image>
+      <view class='timedown font_24'>
+        <view class='timenumber'>{{timeLeft.days}}</view>
+        <view class='time'>天</view>
+        <view class='timenumber'>{{timeLeft.hours}}</view>
+        <view class='time'>时</view>
+        <view class='timenumber'>{{timeLeft.minutes}}</view>
+        <view class='time'>分</view>
+        <view class='timenumber'>{{timeLeft.seconds}}</view>
+        <view class='time'>秒</view>
+      </view>
+    </view>
+    <view class='CommodityTitle'>
+      <view class='title font_42'>{{listData.CaName}}</view>
+      <view class='Term'>
+        <text class='font_30'>有效期至：{{listData.EndDate}}</text>
+        <text>￥{{listData.CaPrice}}</text>
+      </view>
     </view>
   </view>
-  <view class='CommodityTitle'>
-    <view class='title font_42'>{{listData.CaName}}</view>
-    <view class='Term'>
-      <text class='font_30'>有效期至：{{listData.EndDate}}</text>
-      <text>￥{{listData.CaPrice}}</text>
+  <view>
+    <button class='Redenvelopes' open-type="share">
+      <image src='/images/Redenvelopes.png' class='red'></image>
+      <view class='font_26 share'>
+        分享好友购买领
+        <text class='font_30 money'>{{listData.CaMinRedEnvelopes}}-{{listData.CaMaxRedEnvelopes}}现金红包</text>
+      </view>
+      <image src='/images/jos_03.jpg' class='jiantou'></image>
+    </button>
+    <view class='introduction'>
+      <view class='activity'>
+        活动介绍
+      </view>
+      <view class='Richtext'>
+        <!-- fuwenben -->
+        <template is="wxParse" data="{{wxParseData:CaActivityIntroduction.nodes}}" />
+      </view>
+    </view>
+    <view class='purchase'>
+      <view class='activity'>
+        购买须知
+      </view>
+      <view class='Richtext'>
+        <!-- fuwenben -->
+        <template is="wxParse" data="{{wxParseData:CaBuyInstructions.nodes}}" />
+      </view>
     </view>
   </view>
-</view>
-<view>
-  <button class='Redenvelopes' open-type="share">
-    <image src='/images/Redenvelopes.png' class='red'></image>
-    <view class='font_26 share'>
-      分享好友购买领 <text class='font_30 money'>{{listData.CaMinRedEnvelopes}}-{{listData.CaMaxRedEnvelopes}}现金红包</text>
+  <view class='Purchase'>
+    <view class='record'>
+      <text class='font_36'>购买记录</text>
+      <text class='font_30'>总计：{{totalCount}}人</text>
     </view>
-    <image src='/images/jos_03.jpg' class='jiantou'></image>
-  </button>
-  <view class='introduction'>
-    <view class='activity'>
-      活动介绍
+    <view class='font_30 Buyer'>
+      <view>姓名</view>
+      <view>手机号</view>
+      <view>购买状态</view>
     </view>
-    <view class='Richtext'>
-      <!-- fuwenben -->
-      <template is="wxParse" data="{{wxParseData:CaActivityIntroduction.nodes}}" />
+    <view class='font_30 Buyer' wx:for='{{GetCourseAtyOrder}}' wx:key='{{index}}'>
+      <view>{{item.BuyerName}}</view>
+      <view>{{item.BuyerPhone}}</view>
+      <view>已购买</view>
     </view>
   </view>
-  <view class='purchase'>
-    <view class='activity'>
-      购买须知
+  <view class='footer font_26'>
+    <view class='shareimg' bindtap='poster'>
+      <image src='/images/shareimg.png'></image>
     </view>
-    <view class='Richtext'>
-      <!-- fuwenben -->
-      <template is="wxParse" data="{{wxParseData:CaBuyInstructions.nodes}}" />
+    <button open-type="share" class='sharered font_26' bindtap='share'>分享好友购买赢红包</button>
+    <button style='color:#fff;' bindgetuserinfo='getUserInfo' open-type='getUserInfo' class='font_26 buttons immediately' bindtap='purchase' data-CaId='{{listData.CaId}}'>立即抢购</button>
+  </view>
+  <!-- <poster poster-data='{{posterData}}' isShow="{{isShow}}"></poster> -->
+  <view class='wrapper' wx:if='{{isShow}}' catchtouchmove="noneEnoughPeople">
+    <view class='canvas-box'>
+      <cover-image catchtap='close' src='/images/Close.png' class='Close'></cover-image>
+      <canvas canvas-id='posterCanvas' class='canvas'></canvas>
     </view>
-  </view>
-</view>
-<view class='Purchase'>
-  <view class='record'>
-    <text class='font_36'>购买记录</text>
-    <text class='font_30'>总计：{{totalCount}}人</text>
-  </view>
-  <view class='font_30 Buyer'>
-    <view>姓名</view>
-    <view>手机号</view>
-    <view>购买状态</view>
-  </view>
-  <view class='font_30 Buyer' wx:for='{{GetCourseAtyOrder}}' wx:key='{{index}}'>
-    <view>{{item.BuyerName}}</view>
-    <view>{{item.BuyerPhone}}</view>
-    <view>已购买</view>
-  </view>
-</view>
-<view class='footer font_26'>
-  <view class='shareimg' bindtap='poster'>
-    <image src='/images/shareimg.png'></image>
-  </view>
-  <button open-type="share" class='sharered font_26' bindtap='share'>分享好友购买赢红包</button>
-  <button style='color:#fff;' bindgetuserinfo='getUserInfo' open-type='getUserInfo' class='font_26 buttons immediately' bindtap='purchase' data-CaId='{{listData.CaId}}'>立即抢购</button>
-</view>
-<!-- <poster poster-data='{{posterData}}' isShow="{{isShow}}"></poster> -->
-<view class='wrapper' hidden='{{!isShow}}'>
-  <view class='canvas-box'>
-    <cover-image catchtap='close' src='/images/Close.png' class='Close'></cover-image>
-    <canvas canvas-id='posterCanvas' class='canvas'></canvas>
-  </view>
-  <view class='footers'>
-    <view catchtap='saveImage' class='save'>
-      保存到相册
+    <view class='footers'>
+      <view catchtap='saveImage' class='save'>
+        保存到相册
+      </view>
     </view>
   </view>
 </view>

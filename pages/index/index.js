@@ -31,14 +31,30 @@ Page({
         let listData = this.data.listData;
         listData = listData.concat(data.DataList);
         listData.forEach(res=>{
-          let data = $common.timeStamp(res.CaActivityEndDate).showTime
-          res.times=data
+          let data = $common.timeStamp(res.CaActivityEndDate)
+          res.times = `${data.showTime} ${data.h}:${data.mi}:${data.s}`
         })
         this.setData({
           listData
         });
         // : $common.unique(listData, 'CaId')
         this.data.page++;
+      } else {
+        $common.showToast("请求失败")
+      }
+    })
+  },
+  GetUserLimitState(){//是否限制
+    $common.request($api.GetUserLimitState, {
+      openid:wx.getStorageSync("openid")
+    }).then(res => {
+      $common.hide()
+      if (res.data.res) {
+        if (res.data.UserLimitState==1){
+          wx.reLaunch({
+            url: `/pages/limit/limit`
+          })
+        }
       } else {
         $common.showToast("请求失败")
       }
@@ -64,7 +80,8 @@ Page({
   onShow: function () {
     this.data.page = 1
     this.data.listData = []
-    $common.getOpenId().then(res=>{
+    $common.getOpenId().then(res => {
+      this.GetUserLimitState()
       this.getData()
     })
   },

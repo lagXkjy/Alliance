@@ -8,5 +8,5 @@
 </view>
 <view class='bottonbox font_40'>
   <button open-type="share">分享好友购买领红包</button>
-  <view bindtap='seeorder'>查看订单详情</view>
+  <button bindtap='seeorder'>查看订单详情</button>
 </view>

@@ -29,20 +29,20 @@ page {
   margin-top: 100rpx;
   text-align: center;
 }
-.bottonbox>view,.bottonbox>button{
-  width: 560rpx;
+.bottonbox>button{
+  width: 559rpx;
   height: 80rpx;
-  margin: 0 auto;
   margin-bottom: 25rpx;
   line-height: 80rpx;
   border-radius: 8rpx;
 }
-.bottonbox>button{
+.bottonbox>button:nth-child(1){
    background: #d1291a;
    color: #fff;
    border: none;
 }
-.bottonbox>view{
+.bottonbox>button:nth-child(2){
    border:1rpx solid #d1291a;
    color: #d1291a;
+   background: #fff;
 }

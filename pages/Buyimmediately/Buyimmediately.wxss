@@ -1,18 +1,28 @@
 /* pages/Buyimmediately/Buyimmediately.wxss */
-swiper{
+
+.box {
+  width: 100%;
+  overflow-x: hidden;
+  /* margin-bottom:95rpx; */
+}
+
+swiper {
   height: 380rpx;
 }
-.Countdown{
+
+.Countdown {
   position: relative;
   height: 65rpx;
   width: 100%;
 }
-.Countdown>image{
+
+.Countdown>image {
   position: absolute;
   top: 0;
   left: 0;
 }
-.timedown{
+
+.timedown {
   position: absolute;
   right: 10rpx;
   top: 0;
@@ -21,24 +31,28 @@ swiper{
   height: 100%;
   align-items: center;
 }
-.timedown>view{
+
+.timedown>view {
   height: 30rpx;
 }
-.timedown>.timenumber{
+
+.timedown>.timenumber {
   width: 40rpx;
   height: 30rpx;
-  background: #333333;
+  background: #333;
   color: #fff;
   text-align: center;
   line-height: 30rpx;
 }
-.timedown>.time{
+
+.timedown>.time {
   width: 38rpx;
   height: 30rpx;
   text-align: center;
   line-height: 30rpx;
 }
-.CommodityTitle{
+
+.CommodityTitle {
   width: 100%;
   background: #fff;
   padding: 0 30rpx;
@@ -46,24 +60,31 @@ swiper{
   border-bottom: 1rpx solid #d1d0d4;
   margin-bottom: 20rpx;
 }
-.title{
+
+.title {
   padding: 30rpx 0;
+  box-sizing: border-box;
 }
-.Term{
+
+.Term {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 30rpx 0;
+  padding-bottom: 30rpx 0;
+  box-sizing: border-box;
 }
-.Term>text:nth-child(1){
+
+.Term>text:nth-child(1) {
   color: #4c4c4c;
 }
-.Term>text:nth-child(2){
+
+.Term>text:nth-child(2) {
   color: #d1291a;
   font-weight: bold;
   font-size: 48rpx;
 }
-.Redenvelopes{
+
+.Redenvelopes {
   height: 100rpx;
   width: 100%;
   padding: 0 30rpx;
@@ -78,73 +99,92 @@ swiper{
   border-bottom: 1rpx solid #d1d0d4;
   margin-bottom: 20rpx;
   text-align: left;
-
-outline: none;
+  outline: none;
   /* position:static !important; */
 }
-.red{
+
+.red {
   width: 60rpx;
   height: 50rpx;
 }
-.jiantou{
+
+.jiantou {
   width: 14rpx;
   height: 25rpx;
 }
-.money{
+
+.money {
   color: #d1291a;
   font-weight: bold;
 }
-.Redenvelopes>view{
+
+.Redenvelopes>view {
   flex: 1;
 }
-.share{
+
+.share {
   margin-left: 10rpx;
 }
-.introduction,.purchase{
+
+.introduction, .purchase {
   /* padding: 0 30rpx; */
   border-top: 1rpx solid #d1d0d4;
   border-bottom: 1rpx solid #d1d0d4;
   background: #fff;
   margin-bottom: 20rpx;
+  box-sizing: border-box;
 }
-.introduction>.activity,.purchase>.activity{
+
+.introduction>.activity, .purchase>.activity {
   height: 50rpx;
   margin: 30rpx;
   border-left: 4rpx solid #d1291a;
   padding-left: 15rpx;
+  box-sizing: border-box;
 }
-.introduction>.activity,.purchase>.Richtext{
+
+.introduction>.activity, .purchase>.Richtext {
   width: 100%;
 }
-.Purchase{
+.purchase>.Richtext{
+  padding: 0 30rpx;
+  box-sizing: border-box;
+}
+.Purchase {
   padding: 30rpx;
   color: #fff;
-  background: linear-gradient(to right, #d1291a , #ef8465);
+  background: linear-gradient(to right, #d1291a, #ef8465);
   box-sizing: border-box;
-  margin-bottom: 95rpx;
+  padding-bottom: 125rpx;
 }
-.record{
+
+.record {
   display: flex;
   padding-bottom: 30rpx;
   justify-content: space-between;
   border-bottom: 1rpx solid #fff;
 }
-.Buyer{
+
+.Buyer {
   padding-top: 30rpx;
   box-sizing: border-box;
   display: flex;
   justify-content: space-between;
 }
-.Buyer>view:nth-child(1){
+
+.Buyer>view:nth-child(1) {
   width: 30%;
 }
-.Buyer>view:nth-child(3){
+
+.Buyer>view:nth-child(3) {
   width: 20%;
 }
-.Buyer>view:nth-child(2){
-  flex: 1
+
+.Buyer>view:nth-child(2) {
+  flex: 1;
 }
-.footer{
+
+.footer {
   height: 95rpx;
   width: 100%;
   position: fixed;
@@ -153,19 +193,22 @@ outline: none;
   color: #fff;
   align-items: center;
 }
-.shareimg{
+
+.shareimg {
   width: 150rpx;
   height: 100%;
   background: #fff;
   display: flex;
   align-items: center;
 }
-.shareimg>image{
+
+.shareimg>image {
   width: 57rpx;
   height: 57rpx;
   margin: 0 auto;
 }
-.sharered{
+
+.sharered {
   height: 100%;
   width: 299rpx;
   flex: 1;
@@ -176,16 +219,14 @@ outline: none;
   border: none;
   color: #fff;
 }
-.immediately{
+
+.immediately {
   height: 100%;
   width: 299rpx;
   background: #d1291a;
   line-height: 95rpx;
   text-align: center;
 }
-
-
-
 
 /* component/poster.wxss */
 
@@ -209,7 +250,7 @@ outline: none;
   overflow: hidden;
   border-radius: 10rpx;
   display: block;
-  margin-bottom: 30rpx;
+  margin-bottom: 20rpx;
   position: relative;
 }
 

@@ -3,7 +3,7 @@
   <view class='header'>
     <image src='/images/myback.png' class='percent_100'></image>
     <view class='headimg'>
-      <image src='{{userInfo!=""?userInfo.avatarUrl:"/images/banner2.jpg"}}'></image>
+      <image src='{{userInfo!=""?userInfo.avatarUrl:"/images/header.jpg"}}'></image>
       <button style='color:#fff;' class='buttons' bindgetuserinfo='getUserInfo' open-type='getUserInfo'>{{userInfo!=""?userInfo.nickName:"点击获取"}}</button>
     </view>
   </view>

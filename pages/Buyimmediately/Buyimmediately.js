@@ -23,9 +23,11 @@ Page({
     listData: [], //页面详情
     GetCourseAtyOrder: [], //购买记录
     totalCount: '', //购买记录条数
-    ShareQrCode:'',//二维码
     shareOpenid:"",//分享人id
     userInfo:"",
+    CaPosterImage:"",//海报背景
+    ShareQrCode:"",//海报二维码
+    imageH:'',//二维码高度
   },
   GetCourseAtyInfo() { //本页数据
     $common.loading()
@@ -37,14 +39,13 @@ Page({
         let listData = res.data.AtyInfo
         listData.EndDate = $common.timeStamp(listData.CaActivityEndDate).showTime
         let imgUrls = listData.CaMainImage.slice(0, listData.CaMainImage.length - 1).split("|");
-        WxParse.wxParse('CaActivityIntroduction', 'html', listData.CaBuyInstructions, this, 0);
+        WxParse.wxParse('CaActivityIntroduction', 'html', listData.CaActivityIntroduction, this, 0);
         WxParse.wxParse('CaBuyInstructions', 'html', listData.CaBuyInstructions, this, 0);
         this.setData({
           listData,
           imgUrls
         });
         // : $common.unique(listData, 'CaId')
-        this.data.page++;
       } else {
         $common.showToast("请求失败")
       }
@@ -52,12 +53,11 @@ Page({
         this.Countdown()
         this.GetCourseAtyQrCode()
       wx.setNavigationBarTitle({
-        title: this.data.listData.CaActivityBriefIntroduction,
+        title: this.data.listData.CaName,
       })
     })
   },
   GetCourseAtyOrder() { //购买记录
-    $common.loading()
     $common.request($api.GetCourseAtyOrder, {
       CaId: this.data.CaId,
       page: this.data.page,
@@ -110,6 +110,7 @@ Page({
     this.setData({
       isShow: true
     })
+    this.getCanvasSize()
   },
   getUserInfo(res) {//获取用户信息
     let userInfo = res.detail.userInfo;
@@ -123,10 +124,26 @@ Page({
       url: `/pages/Confirmation/Confirmation?CaId=${CaId}&shareOpenid=${that.data.shareOpenid}`,
     })
   },
-  userInfo(){
+  userInfo(){//获取用户信息
     let userInfo = wx.getStorageSync("userInfo")
     this.setData({
       userInfo
+    })
+  },
+  GetUserLimitState() {//是否限制
+    $common.request($api.GetUserLimitState, {
+      openid: wx.getStorageSync("openid")
+    }).then(res => {
+      $common.hide()
+      if (res.data.res) {
+        if (res.data.UserLimitState == 1) {
+          wx.reLaunch({
+            url: `/pages/limit/limit`
+          })
+        }
+      } else {
+        $common.showToast("请求失败")
+      }
     })
   },
   /**
@@ -149,9 +166,11 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-    this.data.page=1
     $common.getOpenId().then(res => {
+      this.GetUserLimitState()
       this.GetCourseAtyInfo()
+      this.data.page=1
+      this.data.GetCourseAtyOrder=[]
       this.GetCourseAtyOrder()
     })
   },
@@ -189,12 +208,10 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function(res) {
-    $common.loading()
     $common.request($api.PostUserShareAtyCourse, {
       CaId: this.data.CaId,
       openid: wx.getStorageSync("openid")
     }).then(res => {
-      $common.hide()
       if (res.data.res) {
       } else {
         $common.showToast("请求失败")
@@ -205,7 +222,6 @@ Page({
         path: `/pages/Buyimmediately/Buyimmediately?CaId=${this.data.CaId}&shareOpenid=${wx.getStorageSync("openid")}&CaActivityBriefIntroduction=${this.data.listData.CaActivityBriefIntroduction}`,
         // imageUrl: 'https://......./img/groupshare.png',  //用户分享出去的自定义图片大小为5:4,
         success: function (res) {
-          console.log("chengg")
           // 转发成功
           wx.showToast({
             title: "分享成功",
@@ -221,7 +237,7 @@ Page({
   },
 
   GetCourseAtyQrCode() {//获取二维码
-    $common.loading()
+    // $common.loading()
     $common.request($api.GetCourseAtyQrCode, {
       CaId: this.data.CaId,
       openid: wx.getStorageSync("openid")
@@ -231,45 +247,70 @@ Page({
         this.setData({
           ShareQrCode: res.data.ShareQrCode
         })
-        this.startDraw()
+        // this.startDraw()
+        this.download()
       } else {
         $common.showToast("请求失败")
+      }
+    })
+  },
+  download() {
+    $common.loading()
+    let data = this.data
+    // console.log(data.ActivityImg + data.listData.CaPosterImage)
+    // console.log(data.UserShareQr + data.ShareQrCode)
+    wx.downloadFile({ //下载背景图
+      url: data.ActivityImg + data.listData.CaPosterImage,
+      success: (res) => {
+        if (res.statusCode === 200) {
+          this.data.CaPosterImage = res.tempFilePath;
+          wx.downloadFile({ //下载头像
+            url: data.UserShareQr + data.ShareQrCode,
+            success: (res) => {
+              $common.hide()
+              if (res.statusCode === 200) {
+                this.data.ShareQrCode = res.tempFilePath;
+                this.setData({
+                  ActivityImg: data.ActivityImg,
+                  ShareQrCode: data.ShareQrCode,
+                })
+                this.getCanvasSize();
+              }
+            }
+          })
+        }
       }
     })
   },
   startDraw() {
     // 使用 wx.createContext 获取绘图上下文 context
     let data = this.data
-
-    // width: 600rpx;
-    // height: 1065rpx;
     let context = wx.createCanvasContext('posterCanvas', this)
-    context.drawImage(data.ActivityImg + data.listData.CaPosterImage, 0, 0, 300, 532.5); //画背景
+    context.drawImage(data.CaPosterImage, 0, 0, data.contentW, data.contentH); //画背景
     context.save(); //先保存状态，以便画完再用
-    context.drawImage(data.UserShareQr+data.ShareQrCode, 106, 360, 87, 87); //画二维码
+    // let width = (data.contentW - 87) / 2
+    // console.log(width)
+    // console.log(data.imageH)
+    // 106   360
+    // 600/174*data.contentW
+    let width=174 / 600 * data.contentW
+    let leftheight = 722 / 1066 * data.contentH
+    let leftwidth = (data.contentW - width) / 2
+    context.drawImage(data.ShareQrCode, leftwidth, leftheight, width, width); //画二维码
     context.save(); //先保存状态，以便画完再用
     context.draw()
   },
-  // getCanvasSize() { //获取canvas宽高
-
-  //   // const query = wx.createSelectorQuery()
-  //   // // query.select('.canvas').boundingClientRect()
-  //   // query.selectViewport().scrollOffset()
-  //   // query.exec(function (res) {
-  //   //   console.log(res)
-  //   //   res[0].top       // #the-id节点的上边界坐标
-  //   //   res[1].scrollTop // 显示区域的竖直滚动位置
-  //   //   console.log('打印demo的元素的信息', res);
-  //   //   console.log('打印高度', res[0].height);
-  //   // })
-  //   var query = wx.createSelectorQuery()
-  //   wx.createSelectorQuery().select('.canvas').boundingClientRect((res) => {
-  //     console.log(res)
-  //     this.data.contentW = res.width;
-  //     this.data.contentH = res.height;
-  //     this.startDraw();
-  //   }).exec();
-  // },
+  getCanvasSize() { //获取canvas宽高
+    if (this.data.isShow){
+      var query = wx.createSelectorQuery()
+      wx.createSelectorQuery().select('.canvas').boundingClientRect((res) => {
+        this.data.contentW = res.width;
+        this.data.contentH = res.height;
+        this.data.imageH = res.height * 0.69; //图片的高度占canvas的71%
+        this.startDraw();
+      }).exec();
+    }
+  },
   close() { //点击消失
     this.setData({
       isShow: false

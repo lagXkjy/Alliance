@@ -148,7 +148,7 @@ function html2json(html, bindName) {
             if (node.tag === 'img') {
                 node.imgIndex = results.images.length;
               
-              var imgUrl = `https://wxwj.1-zhao.cn`+ node.attr.src;
+              var imgUrl = `https://qklm.1-zhao.fun`+ node.attr.src;
                 // console.log(imgUrl)
                 if (imgUrl[0] == '') {
                     imgUrl.splice(0, 1);

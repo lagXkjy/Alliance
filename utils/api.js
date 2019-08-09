@@ -41,4 +41,6 @@ module.exports = {
   GetMechanismInfo: `${host}/ltp/Mechanism/GetMechanismInfo`,
   // 添加 //修改 机构信息
   PostMechanismInfo: `${host}/ltp/Mechanism/PostMechanismInfo`,
+  //获取用户限制状态 openid    回传参数：UserLimitState    0：正常       1：限制
+  GetUserLimitState: `${host}/ltp/UserInfo/GetUserLimitState`,
 }

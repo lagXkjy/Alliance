@@ -141,11 +141,6 @@ module.exports = {
         .then(res => {
           if (res.data.res) {
             wx.setStorageSync('openid', res.data.openid)
-            if (res.data.UserLimitState==1){
-              wx.reLaunch({
-                url:`/pages/limit/limit`
-              })
-            }
             resolve()
           }
         })

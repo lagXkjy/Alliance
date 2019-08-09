@@ -1,1 +1,5 @@
 /* pages/limit/limit.wxss */
+view{
+  text-align: center;
+  margin-top: 30rpx;
+}

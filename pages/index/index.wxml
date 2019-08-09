@@ -11,11 +11,11 @@
       </view>
       <view class='content'>
         <view class='font_36 marginbottom_15 overtwo'>
-          {{item.CaActivityBriefIntroduction}}
+          {{item.CaName}}
         </view>
         <view class='briefbox'>
           <view class='brief'>
-            <view class='overflow font_30 marginbottom_15 briefcolor'>{{item.CaName}}</view>
+            <view class='overflow font_30 marginbottom_15 briefcolor'>{{item.CaActivityBriefIntroduction}}</view>
             <view class='font_24 timecolor'>截止：{{item.times}}</view>
           </view>
           <view class='botton font_36' bindtap='Buyimmediately' data-index='{{index}}'>立即抢购</view>
