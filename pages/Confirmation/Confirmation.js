@@ -33,8 +33,12 @@ Page({
       $common.hide()
       if (res.data.res) {
         let listData = this.data.listData = res.data
+        let name = listData.UserName
+        let phone = listData.UserPhone
         this.setData({
-          listData
+          listData,
+          name,
+          phone,
         })
       } else {
         $common.showToast("请求失败")
@@ -57,8 +61,6 @@ Page({
       $common.hide()
       if (res.data.res) {
         let data = res.data;
-        wx.setStorageSync("name", this.data.name)
-        wx.setStorageSync("phone", this.data.phone)
         wx.requestPayment({
           'timeStamp': res.data.paras.timeStamp,
           'nonceStr': res.data.paras.nonceStr,
@@ -102,12 +104,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    let name = wx.getStorageSync("name")
-    let phone = wx.getStorageSync("phone")
     let CaId = options.CaId
     this.setData({
-      phone: phone != '' ? phone : "",
-      name: name != '' ? name : "",
       CaId,
       shareOpenid: options.shareOpenid
     })

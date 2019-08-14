@@ -80,7 +80,9 @@
       <image src='/images/shareimg.png'></image>
     </view>
     <button open-type="share" class='sharered font_26' bindtap='share'>分享好友购买赢红包</button>
-    <button style='color:#fff;' bindgetuserinfo='getUserInfo' open-type='getUserInfo' class='font_26 buttons immediately' bindtap='purchase' data-CaId='{{listData.CaId}}'>立即抢购</button>
+    
+    <button wx:if="{{QuotaIsFull}}" style='color:#fff;background:#ccc;' class='font_26 buttons immediately'>名额已满</button>
+    <button wx:else style='color:#fff;' bindgetuserinfo='getUserInfo' open-type='getUserInfo' class='font_26 buttons immediately' bindtap='purchase' data-CaId='{{listData.CaId}}'>立即抢购</button>
   </view>
   <!-- <poster poster-data='{{posterData}}' isShow="{{isShow}}"></poster> -->
   <view class='wrapper' wx:if='{{isShow}}' catchtouchmove="noneEnoughPeople">

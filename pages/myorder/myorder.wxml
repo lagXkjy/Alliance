@@ -22,6 +22,6 @@
     </view>
   </view>
 </view>
-<view class='Notime' wx:if='{{listData.length<1}}'>
+<view class='Notime' wx:if='{{blank&&listData.length<1}}'>
   暂无数据
 </view>

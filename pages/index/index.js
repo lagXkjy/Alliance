@@ -10,7 +10,8 @@ Page({
     ActivityImg: $api.ActivityImg,//图片拼接地址
     page:1,//页数
     pagesize:10,//一页几条
-    listData:[]
+    listData:[],
+    blank:false,
   },
   Buyimmediately(e){//跳转页面
     let index=e.currentTarget.dataset.index
@@ -35,7 +36,8 @@ Page({
           res.times = `${data.showTime} ${data.h}:${data.mi}:${data.s}`
         })
         this.setData({
-          listData
+          listData,
+          blank:true,
         });
         // : $common.unique(listData, 'CaId')
         this.data.page++;
@@ -64,7 +66,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    $common.getOpenId()
   },
 
   /**

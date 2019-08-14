@@ -28,6 +28,7 @@ Page({
     CaPosterImage:"",//海报背景
     ShareQrCode:"",//海报二维码
     imageH:'',//二维码高度
+    QuotaIsFull:false,//是否有名额
   },
   GetCourseAtyInfo() { //本页数据
     $common.loading()
@@ -43,7 +44,8 @@ Page({
         WxParse.wxParse('CaBuyInstructions', 'html', listData.CaBuyInstructions, this, 0);
         this.setData({
           listData,
-          imgUrls
+          imgUrls,
+          QuotaIsFull:res.data.QuotaIsFull
         });
         // : $common.unique(listData, 'CaId')
       } else {

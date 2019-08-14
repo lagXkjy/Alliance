@@ -10,7 +10,7 @@
 </view>
 <view>
   <view class='fon-30 ffoter '>
-    <button bindgetuserinfo='getUserInfo' open-type='getUserInfo' bindtap='jump' wx:for="{{list}}" wx:key='*this' data-to='{{item.to}}' class='buttons lasta'>
+    <button bindgetuserinfo='getUserInfo' open-type='getUserInfo' bindtap='jump' wx:for="{{list}}" wx:key='{{index}}' data-to='{{item.to}}' class='buttons lasta'>
       <view class='this-flex'>
         <image mode='widthFix' style='width:30rpx; margin-right:20rpx' src='{{item.url}}'></image>
         <text>{{item.title}}</text>

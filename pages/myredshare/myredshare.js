@@ -10,7 +10,8 @@ Page({
     listData: [],
     page: 1,
     pagesize: 10,
-    TotalAmount:"",
+    TotalAmount: "",
+    blank: false,
   },
   details(e) {
     wx.navigateTo({
@@ -36,7 +37,8 @@ Page({
         })
         this.setData({
           listData,
-          TotalAmount
+          TotalAmount,
+          blank:true
         });
         // : $common.unique(listData, 'CaId')
         this.data.page++;

@@ -11,6 +11,7 @@ Page({
     listData:[],
     page:1,
     pagesize:10,
+    blank: false,
   },
   details(e){
     let CoId=e.currentTarget.dataset.coid
@@ -35,7 +36,8 @@ Page({
         //   res.times = data
         // })
         this.setData({
-          listData
+          listData,
+          blank:true,
         });
         // : $common.unique(listData, 'CaId')
         this.data.page++;

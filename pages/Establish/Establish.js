@@ -14,7 +14,9 @@ Page({
     address:'',
     focus: {},//获取焦点
     Submitted:false,//是否显示信息已提交或修改
-    listData:{},
+    listData:{
+      MiId:0,
+    },
     SiCreateAlliancesBanner:'',//banner
   },
   formSubmit(e){
@@ -81,6 +83,7 @@ Page({
     })
   },
   GetMechanismInfo() {//获取机构信息
+    $common.loading()
     $common.request($api.GetMechanismInfo, {
       openid: wx.getStorageSync("openid")
     }).then(res => {
@@ -136,7 +139,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    wx.stopPullDownRefresh()
   },
 
   /**
